@@ -16,6 +16,9 @@
 !/log/.keep
 /tmp
 
+# Ignore compiled assets
+/public/assets
+
 # Ignore secret_token
 .secret
 
