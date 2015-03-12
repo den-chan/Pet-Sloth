@@ -23,6 +23,17 @@ class CreateRequests < ActiveRecord::Migration
   end
 end
 
+class CreateCollaborations < ActiveRecord::Migration
+  def change
+    create_table :collaborations do |t|
+      t.belongs_to :request, index: true
+      t.string :body
+      
+      t.timestamps null: false
+    end
+  end
+end
+
 class CreateTags < ActiveRecord::Migration
   def change
     create_table :tags do |t|
