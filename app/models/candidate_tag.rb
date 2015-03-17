@@ -1,2 +1,3 @@
-class Tag < ActiveRecord::Base
+class CandidateTag < ActiveRecord::Base
+  validates :title, presence: true
 end

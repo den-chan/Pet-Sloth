@@ -1,4 +1,16 @@
-<%= form_for @user, url: {action: "create"}, html: {class: "section container"} do |f| %>
+<% flash[:alert] and flash[:alert].each do |name, msgs| -%>
+  <%=
+    content_tag :div, class: "alert" do 
+      name == "username" and concat content_tag :div, "User name:"
+      concat (content_tag :div do
+        msgs.map do |msg|
+          content_tag :div, msg
+        end.join.html_safe
+      end)
+    end
+  %>
+<% end -%>
+<%= form_for @user, url: {action: "create"}, as: :user, html: {class: "section container"} do |f| %>
   <div class="column u-cf">
     <h3>Welcome to the pet sloth :)</h3>
   </div>
@@ -6,7 +18,7 @@
     <%= f.text_field :username, class: "u-full-width", placeholder: "Something to call you." %>
   </div>
   <div class="six columns u-cf">
-    <%= f.text_area :body, size: "60x12", class: "u-full-width", placeholder: "Pitch yourself to potential collaborators." %>
+    <%= f.text_area :body, class: "u-full-width", placeholder: "Pitch yourself to potential collaborators." %>
   </div>
   <div class="one column u-cf">
     <%= f.submit "Register" %>

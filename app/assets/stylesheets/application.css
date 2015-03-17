@@ -21,3 +21,13 @@
 .section {
  margin-top: 6rem 
 }
+
+.alert {
+  z-index: 99;
+  background-color: turquoise;
+  padding: 1rem 2rem
+}
+.alert > * {
+  display: inline-block;
+  margin-right: .5rem
+}

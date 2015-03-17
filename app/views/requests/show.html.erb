@@ -1,17 +1,17 @@
-<%= form_for @user, url: {action: "create"}, html: {class: "section container"} do |f| %>
+<%= form_for @tag, url: {action: "search"}, remote: true, html: {class: "section container"} do |f| %>
   <div class="column u-cf">
     <h3>Tag Search</h3>
   </div>
-  <div class="four column u-cf">
-    <%= f.text_field :search %>
+  <div class="u-full-width u-cf">
+    <%= f.text_field :title, placeholder: "Enter tags to search for", class: "nine columns" %>
   </div>
-  <div class="twelve columns u-cf">
+  <div class="u-full-width u-cf">
     <div id="tag set"></div>
   </div>
-  <div class="nine column u-cf">
-    <div id="user set"></div>
+  <div class="u-full-width u-cf">
+    <div id="user set" class="nine columns"></div>
   </div>
-<% end %>
+<%  end -%>
 <div class="hide">
   <div id="stamp 1">
     <span>&bull;</span>

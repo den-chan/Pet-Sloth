@@ -1,4 +1,7 @@
 class Request < ActiveRecord::Base
+  validates :title, presence: true
+  validates :public, presence: true
+  
   belongs_to :user
   has_many :collaborations
   has_many :tags, as: :taggable
