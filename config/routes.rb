@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   
   root "front#index"
   
-  resources :users
+  resources :users, only: [:new, :create, :show] do
+    post 'search', on: :collection
+  end
   
   resources :requests, only: [:new, :show] do
-    get 'index', on: :collection
-    get 'search', on: :collection
+    #get 'index', on: :collection
+    post 'search', on: :collection
   end
   
   # The priority is based upon order of creation: first created -> highest priority.

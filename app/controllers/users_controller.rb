@@ -1,10 +1,7 @@
-class UsersController < ApplicationController
-  def index
-    @user = User.find(session[:current_user_id])
-  end
-  
+class UsersController < ApplicationController  
   def new
     @user = User.new
+    @tag = Tag.new
     flash.discard
   end
   
@@ -16,6 +13,15 @@ class UsersController < ApplicationController
     else
       redirect_to :back, alert: @user.errors.messages
     end
+  end
+  
+  def show
+    @user = User.find(session[:current_user_id])
+  end
+  
+  def search
+    @users = User.all
+    render json: @users.select("username, body"), include: {tags: {only: :title}}
   end
   
   private

@@ -20,7 +20,20 @@
   <div class="six columns u-cf">
     <%= f.text_area :body, class: "u-full-width", placeholder: "Pitch yourself to potential collaborators." %>
   </div>
+  <div class="six columns u-cf">
+    <%= fields_for @tag do |g| %>
+    <%=   g.search_field :title, placeholder: "Optionally: label yourself with skills and interests", class: "u-full-width" %>
+    <%  end -%>
+    <%= content_tag :ul, id: "tags", class: "u-full-width tag-list" do %>
+    <%=   content_tag :li, "Hay" %>
+    <%  end -%>
+  </div>
   <div class="one column u-cf">
     <%= f.submit "Register" %>
   </div>
+  <div id="testing"></div>
 <% end %>
+<%= form_for @tag, url: {action: "search"}, as: :single_tag, remote: true do |f| %>
+<%=   f.hidden_field :title %>
+<%=   f.hidden_field :active %>
+<%  end -%>

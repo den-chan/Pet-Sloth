@@ -24,15 +24,16 @@ class Initial < ActiveRecord::Migration
       t.timestamps null: false
     end
     
-    create_table :tags do |t|
+    create_table :taggings do |t|
       t.references :taggable, polymorphic: true, index: true
-      t.string :title, null: false
+      t.belongs_to :tags, index: true
  
       t.timestamps null: false
     end
     
-    create_table :candidatetags do |t|
+    create_table :tags do |t|
       t.string :title, null: false
+      t.boolean :active
  
       t.timestamps null: false
     end
