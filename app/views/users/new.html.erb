@@ -33,7 +33,7 @@
   </div>
   <div id="testing"></div>
 <% end %>
-<%= form_for @tag, url: {action: "search"}, as: :single_tag, remote: true do |f| %>
+<%= form_for @tag, url: {controller: "tags", action: "search"}, as: :single_tag, remote: true do |f| %>
 <%=   f.hidden_field :title %>
 <%=   f.hidden_field :active %>
 <%  end -%>

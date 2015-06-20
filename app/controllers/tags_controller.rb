@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   def search
-    @tag = Tag.find search_params, select: :title
-    render json: @tag.select("title")
+    @tag = Tag.find_by(search_params.keep_if {|k| k == "title"}) #wat
+    render json: @tag || {}
   end
   
   private

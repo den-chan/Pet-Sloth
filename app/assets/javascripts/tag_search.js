@@ -21,8 +21,9 @@ $(".user.new").ready(function(){
     }
   });
 
-  $('#tag_title').bind('ajax:success', function (evt, data, status, xhr) {
-    $('#testing').append("<div class='tag'>" + data + "</div>")
+  $('#single_tag_title').bind('ajax:success', function (evt, data, status, xhr) {
+    alert(JSON.parse(data).title);
+    $('#testing').append("<div class='tag'>" + JSON.parse(data).title + "</div>")
   })
   
 })
